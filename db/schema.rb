@@ -11,10 +11,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160605212836) do
+ActiveRecord::Schema.define(version: 20160606221347) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "shoes", force: :cascade do |t|
+    t.float    "size"
+    t.string   "name"
+    t.string   "brand"
+    t.integer  "price"
+    t.string   "condition"
+    t.string   "color"
+    t.text     "notes"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "shoes", ["user_id"], name: "index_shoes_on_user_id", using: :btree
+
+  create_table "shoes_tags", force: :cascade do |t|
+    t.integer "shoe_id"
+    t.integer "tag_id"
+  end
+
+  add_index "shoes_tags", ["shoe_id"], name: "index_shoes_tags_on_shoe_id", using: :btree
+  add_index "shoes_tags", ["tag_id"], name: "index_shoes_tags_on_tag_id", using: :btree
+
+  create_table "tags", force: :cascade do |t|
+    t.string   "word"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
@@ -25,4 +54,7 @@ ActiveRecord::Schema.define(version: 20160605212836) do
     t.datetime "updated_at",      null: false
   end
 
+  add_foreign_key "shoes", "users"
+  add_foreign_key "shoes_tags", "shoes"
+  add_foreign_key "shoes_tags", "tags"
 end
