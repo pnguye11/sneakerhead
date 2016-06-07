@@ -3,4 +3,7 @@ Rails.application.routes.draw do
   # get 'signup', to: 'users#new'
   root 'users#index'
   resources :users
+
+  resources :sessions, only: [:new, :create, :destroy]
+  get '/login', to: 'sessions#new'
 end
