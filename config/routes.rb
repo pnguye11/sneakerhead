@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
   # get 'index', to: 'users#index'
   # get 'signup', to: 'users#new'
-  root 'users#index'
+  # root 'users#index'
+  root 'shoes#index'
   resources :users
 
   resources :sessions
   get '/login', to: 'sessions#new'
+
+  resources :shoes
+
 end
