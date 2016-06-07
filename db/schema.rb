@@ -17,14 +17,7 @@ ActiveRecord::Schema.define(version: 20160606221347) do
   enable_extension "plpgsql"
 
   create_table "shoes", force: :cascade do |t|
-    t.float    "size"
-    t.string   "name"
-    t.string   "brand"
-    t.integer  "price"
-    t.string   "condition"
-    t.string   "color"
-    t.text     "notes"
-    t.integer  "user_id"
+    t.string   "caption"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
