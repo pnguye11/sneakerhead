@@ -1,8 +1,16 @@
-
-<%= form_for(@shoe, multipart: true) do |f| %>
-  <%= f.file_field :image %>
-  <%= f.label :size %>
-  <%= f.button :submit %>
-
-<% end %>
-
+<div class="text-center">
+  <%= link_to image_tag @shoe.image.url(:medium) %>
+</div>
+<div class="form-wrapper">
+  <%= form_for(@shoe, multipart: true ) do |f| %>
+    <div class="form-group">
+      <%= f.file_field :image %>
+    </div>
+    <div class="form-group text-center">
+      <%= f.label :notes %>
+    </div>
+    <div class="form-group text-center">
+      <%= f.button :submit, class: 'btn-success' %>
+    </div>
+  <% end %>
+</div>

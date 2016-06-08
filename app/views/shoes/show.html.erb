@@ -1,0 +1,11 @@
+<%= render 'shoe', shoe: @shoe %>
+<div class="text-center edit-links">
+  <% if @shoe.user.id == current_user.id %>
+    <%= link_to "Cancel", shoes_path %>
+    |
+    <%= link_to "Edit shoe", edit_shoe_path(@shoe) %>
+  <% else %>
+    <%= link_to "Cancel", root_path %>
+  <% end %>
+</div>
+
