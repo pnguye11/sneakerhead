@@ -1,11 +1,17 @@
 class ShoesController < ApplicationController
-  def new
-    @shoe = Shoe.all
+  before_action :set_shoe, only: [:show, :edit, :update, :destroy]
+  def index
+    @shoes = Shoe.all
+    @shoe = Shoe.new
   end
-def create
-    if @shoe = shoe.create(shoe_params)
+
+  def new
+    @shoe = Shoe.new
+  end
+  def create
+    if @shoe = Shoe.create(shoe_params)
       flash[:success] = "Your kicks has been created brah!"
-      redirect_to posts_path
+      redirect_to shoes_path
     else
       flash.now[:alert] = "Your new post couldn't be created!"
       render :new
@@ -13,11 +19,10 @@ def create
   end
   def edit
   end
-
   def update
     if @shoe.update(shoe_params)
       flash[:success] = "Updated"
-      redirect_to posts_path
+      redirect_to shoes_path
     else
       flash.now[:alert] = "Update failed!"
       render :edit
@@ -32,10 +37,10 @@ def create
   private
 
   def shoe_params
-    params.require(:shoe).permit(:image, :caption)
+    params.require(:shoe).permit(:image, :size, :name, :brand, :price, :condition, :color, :notes)
   end
 
-  def set_post
-    @shoe = Post.find(params[:id])
+  def set_shoe
+    @shoe = Shoe.find(params[:id])
   end
 end

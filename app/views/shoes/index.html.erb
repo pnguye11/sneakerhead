@@ -1,1 +1,9 @@
 <h1>kicks</h1>
+
+
+<% @shoes.each do |shoe| %>
+  <%=image_tag shoe.image.url(:medium) %>
+
+
+
+<% end %>

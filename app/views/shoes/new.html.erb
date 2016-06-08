@@ -1,0 +1,8 @@
+
+<%= form_for(@shoe, multipart: true) do |f| %>
+  <%= f.file_field :image %>
+  <%= f.label :size %>
+  <%= f.button :submit %>
+
+<% end %>
+
