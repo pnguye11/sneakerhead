@@ -1,16 +1,20 @@
-<div class="text-center">
-  <%= link_to image_tag @shoe.image.url(:medium) %>
+<div class="jumbotron">
+ <h1><u class='change'>Sell your Kicks</u></h1>
 </div>
+<div class="container">
 <div class="form-wrapper">
-  <%= form_for(@shoe, multipart: true ) do |f| %>
+
+<div class='.col-md-6 .col-md-offset-3'>
+  <%= bootstrap_form_for(@shoe, multipart: true ) do |f| %>
     <div class="form-group">
       <%= f.file_field :image %>
-    </div>
-    <div class="form-group text-center">
-      <%= f.label :notes %>
-    </div>
-    <div class="form-group text-center">
-      <%= f.button :submit, class: 'btn-success' %>
-    </div>
+      </div>
+      <%= f.text_field :name %> <br>
+      <%= f.text_field :size %> <br>
+      <%= f.select :condition, [['DS','DS'],['VNDS','VNDS'],['GOOD','GOOD'], ['BEATERS', 'BEATERS']] %><br>
+      <%= f.select :brand, [['NIKE','NIKE'],['ADIDAS','ADIDAS'],['ASICS','ASICS'], ['NEW BALANCE', 'NEW BALANCE']] %><br>
+      <%= f.text_field :price %> <br>
+      <%= f.submit class:'btn btn-success' %>
   <% end %>
+< /div>
 </div>

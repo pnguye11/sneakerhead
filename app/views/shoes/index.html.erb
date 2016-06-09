@@ -7,7 +7,7 @@
         </div>
       </div>
       <div class="image center-block">
-        <%= link_to (image_tag shoe.image.url(:thumb), class:'img-responsive'), shoe_path(shoe) %>
+        <%= image_tag shoe.image.url(:thumb) %>
       </div>
       <p class="notes">
         <%= shoe.notes %>

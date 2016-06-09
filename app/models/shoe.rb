@@ -1,5 +1,5 @@
 class Shoe < ActiveRecord::Base
-  validates :image, presence: true
+  # validates :image, presence: true
 
   has_attached_file :image, styles:{
     thumb: "100x100",

@@ -26,8 +26,10 @@ kate = User.new(
   password_confirmation: "123"
 )
 
+kate.save
+nate.save
 
-kate.shoes.new(
+shoe1 = kate.shoes.new(
 name: "dela soul",
 size: 8.5,
 brand: "nike",
@@ -37,7 +39,7 @@ color: "Yellow, brown",
 notes: "100\% stars"
 )
 
-nate.shoes.new(
+shoe2 = nate.shoes.new(
 name: "unkles",
 size: 8.5,
 brand: "nike",
@@ -47,8 +49,8 @@ color: "Yellow, brown",
 notes: "100\% stars"
 )
 
-kate.save
-nate.save
+shoe1.save
+shoe2.save
 
 yellow = Tag.create word: '#yellow'
 purple = Tag.create word: '#dope'

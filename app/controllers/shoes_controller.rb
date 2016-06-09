@@ -1,6 +1,6 @@
 class ShoesController < ApplicationController
   before_action :set_shoe, only: [:show, :edit, :update, :destroy]
-  before_action :owned_shoe, only: [:edit, :update, :destroy]
+  before_action :authorize, except: [:index, :show]
   def index
     @shoes = Shoe.all
     @shoe = Shoe.new
@@ -12,7 +12,9 @@ class ShoesController < ApplicationController
     @shoe = Shoe.new
   end
   def create
-    if @shoe = Shoe.create(shoe_params)
+    @shoe = Shoe.new shoe_params
+    if @shoe.save
+      current_user.shoes << @shoe
       flash[:success] = "Your kicks has been created brah!"
       redirect_to root_path
     else

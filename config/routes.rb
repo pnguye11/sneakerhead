@@ -1,14 +1,14 @@
 Rails.application.routes.draw do
-  # get 'index', to: 'users#index'
-  # get 'signup', to: 'users#new'
-  # root 'users#index'
-  root 'shoes#index'
-  resources :users
+  root 'static_pages#index'
 
-  resources :sessions
+  resources :users, except: :index do
+    resources :shoes, except: :index
+  end
+
+  resources :shoes, only: :index
+
+  resources :sessions, only: [:new, :create ,:destroy]
   get '/login', to: 'sessions#new'
-  get '/logout', to: 'users#index'
 
-  resources :shoes
 
 end

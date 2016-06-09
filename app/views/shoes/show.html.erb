@@ -1,5 +1,8 @@
-<%= render 'shoe', shoe: @shoe %>
+
 <div class="text-center edit-links">
+<div>
+    <% image_tag shoe.image.url(:thumb) %>
+</div>
   <% if @shoe.user.id == current_user.id %>
     <%= link_to "Cancel", shoes_path %>
     |
