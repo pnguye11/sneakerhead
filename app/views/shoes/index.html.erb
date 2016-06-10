@@ -1,11 +1,11 @@
-<p id="notice"><%= notice %></p>
 
+<p id="notice"><%= notice %></p>
 <div class = "row shoes-grid">
   <% @shoes.each do |shoe| %>
     <div class = "col-md-3 shoe-item">
       <div class="panel panel-default Shoe">
-        <div class="panel-body">
-          <%= image_tag shoe.image.url(:medium), class: "img-responsice" %><br>
+          <div class="panel-body">
+        <%= link_to image_tag(shoe.image.url(:medium)) %><br>
         </div>
         <div class="panel-footer">
           Name: <%= shoe.name %> <br>
@@ -25,6 +25,4 @@
     </div>
   <% end %>
 </div>
-
-
 

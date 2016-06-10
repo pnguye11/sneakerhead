@@ -1,6 +1,6 @@
 
 <div class="text-center edit-links">
-
+    <%= link_to "User Home", user_path(current_user) %>
     <div class="row">
       <%= image_tag @shoe.image.url(:medium) %><br>
       Name: <%= @shoe.name %> <br>

@@ -14,11 +14,8 @@ class ShoesController < ApplicationController
     @shoe = current_user.shoes.build
   end
 
-  # GET /shoes/1/edit
   def edit
   end
-
-  # POST /shoes
 
   def create
     @shoe = current_user.shoes.build(shoe_params)
@@ -31,7 +28,6 @@ class ShoesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /shoes/1
   def update
     respond_to do |format|
       if @shoe.update(shoe_params)
@@ -42,7 +38,6 @@ class ShoesController < ApplicationController
     end
   end
 
-  # DELETE /shoes/1
   def destroy
     @shoe.destroy
     respond_to do |format|
@@ -51,7 +46,7 @@ class ShoesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+
     def set_shoe
       @shoe = Shoe.find(params[:id])
     end
@@ -63,6 +58,6 @@ class ShoesController < ApplicationController
 
     def correct_user
       @shoe = current_user.shoes.find_by(id: params[:id])
-      redirect_to shoes_path, notice: "C'mon brah, don't stuff other people's stuff" if @shoe.nil?
+      redirect_to shoes_path, notice: "C'mon brah, don't touch other people's stuff" if @shoe.nil?
     end
 end

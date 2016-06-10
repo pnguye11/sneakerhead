@@ -1,5 +1,8 @@
   <h1>Sell Your Kicks</h1>
   <%= form_for @shoe, html: {multipart: true} do |f| %>
+<div class="container">
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
     <div class="form-group">
       <%= f.file_field :image %>
       </div>
@@ -11,5 +14,7 @@
       <%= f.text_field :notes %> <br>
       <%= f.text_field :color %> <br>
       <%= f.submit class:'btn btn-success' %>
-  <% end %>
-
+    <% end %>
+    </div>
+  </div>
+</div>

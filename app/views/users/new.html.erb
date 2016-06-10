@@ -1,52 +1,26 @@
-
+<% provide(:title, "Sign up") %>
 <h1>Sign Up</h1>
-<%= form_for @user do |f| %>
-  <% if @user.errors.any? %>
-    <div class="error_messages">
-      <h2>Form is invalid</h2>
-      <ul>
-        <% for message in @user.errors.full_messages %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+
 <div class="container">
-  <div class="row">
-    <div class="form-group">
-      <%= f.label :name %><br>
+  <div class="col-md-8 col-md-offset-2">
+
+    <%= bootstrap_form_for @user do |f| %>
+
       <%= f.text_field :name %>
-    </div>
-  </div>
-  <div class="row">
-    <div class="form-group">
-      <%= f.label :username %><br>
+
+
       <%= f.text_field :user_name %>
-    </div>
-    <div class="row">
-    <div class="form-group">
-      <%= f.label :email %><br>
+
+
       <%= f.text_field :email %>
-    </div>
-  </div>
-  <div class="row">
-    <div class="form-group">
-      <%= f.label :password %><br>
+
+
       <%= f.password_field :password %>
-    </div>
-  </div>
-  <div class="row">
-    <div class="form-group">
-      <%= f.label :password_confirmation %><br>
+
+
       <%= f.password_field :password_confirmation %>
-    </div>
-  </div>
-  <div class="row">
-    <div class="form-group">
-    <div class="btn waves-effect waves-light col s12">
-      <%= f.submit %>
+   <%= f.submit 'Login', class: "btn waves-effect waves-light col s12" %>
+  <% end %>
   </div>
 </div>
-</div>
-</div>
-<% end %>
+
