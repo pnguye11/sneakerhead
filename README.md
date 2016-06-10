@@ -26,7 +26,7 @@
  
 * As a user I would like to post/see images of the actual shoes for sale.
 
-* As a user I want to be able to see all available purchases as a list.
+* As a user I want to be able to see all available purchases.
 
 * As a user I do not want others to edit my post.
 
@@ -46,7 +46,7 @@ As a user I would like to contact the seller  either through email or DM for mor
 As a user I would like to rate other users on their description accuracy and overall experience with them.
 
 
-
+<a href="https://trello.com/b/QGBXkVxw/project-2">Trello</a>
 
 ###Send me Push Requests for Improvements!
 
