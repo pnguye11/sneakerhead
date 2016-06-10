@@ -1,58 +1,70 @@
 class ShoesController < ApplicationController
-  # before_action :set_shoe, only: [:show, :edit, :update, :destroy]
-  before_action :authorize, except: [:index, :show]
+  before_action :set_shoe, only: [:show, :edit, :update, :destroy]
+  before_action :correct_user, only: [:edit, :update, :destroy]
+
   def index
     @shoes = Shoe.all
-    @shoe = Shoe.new
   end
 
   def show
-    @shoe = Shoe.find(params[:id])
-    @user = @shoe.user
   end
+
+  # GET /shoes/new
   def new
-    @user = User.find(params[:user_id])
-    @shoe = @user.shoes.new
+    @shoe = current_user.shoes.build
   end
+
+  # GET /shoes/1/edit
+  def edit
+  end
+
+  # POST /shoes
 
   def create
-    @user = User.find(params[:user_id])
-    @shoe = @user.shoes.new(shoe_params)
-    if @shoe.save
-      redirect_to user_path(@user.id), notice: "Your kicks has been created brah!"
-    else
-      render :new, alert: "Your new post couldn't be created!"
+    @shoe = current_user.shoes.build(shoe_params)
+      respond_to do |format|
+      if @shoe.save
+        format.html { redirect_to @shoe, notice: 'Shoe was successfully created.' }
+      else
+        format.html { render :new }
+      end
     end
   end
 
-  def edit
-    @user = User.find(params[:user_id])
-    @shoe = Shoe.find(params[:id])
-  end
-
+  # PATCH/PUT /shoes/1
   def update
-    @shoe = Shoe.find(params[:id])
-    if @shoe.update_attributes(shoe_params)
-      flash[:success] = "Updated"
-      redirect_to user_path(@shoe.user)
-    else
-      flash.now[:alert] = "Update failed!"
-      render :edit
+    respond_to do |format|
+      if @shoe.update(shoe_params)
+        format.html { redirect_to @shoe, notice: 'Shoe was successfully updated.' }
+        format.json { render :show, status: :ok, location: @shoe }
+      else
+        format.html { render :edit }
+        format.json { render json: @shoe.errors, status: :unprocessable_entity }
+      end
     end
   end
 
+  # DELETE /shoes/1
   def destroy
-    @shoe = Shoe.find(params[:id])
-    redirect_to user_path
+    @shoe.destroy
+    respond_to do |format|
+      format.html { redirect_to shoes_url, notice: 'Shoe was successfully destroyed.' }
+    end
   end
 
   private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_shoe
+      @shoe = Shoe.find(params[:id])
+    end
 
-  def shoe_params
-    params.require(:shoe).permit(:image, :size, :name, :brand, :price, :condition, :color, :notes)
-  end
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def shoe_params
+      params.require(:shoe).permit(:size, :name, :brand, :price, :condition, :color, :notes)
+    end
 
-  def set_shoe
-    @shoe = Shoe.find(params[:id])
-  end
+    def correct_user
+      @shoe = current_user.shoes.find_by(id: params[:id])
+      redirect_to shoes_path, notice: "Not authorize to edit this pin" if @shoe.nil?
+    end
 end
