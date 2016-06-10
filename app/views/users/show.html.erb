@@ -1,13 +1,20 @@
+
 <h1><%= @user.user_name %></h1>
 
 <div class="container">
   <% @user.shoes.each do |shoe| %>
     <div class="col-md-3">
-      <% image_tag shoe.image.url %>
-      <%=shoe.name %>
-      <%=shoe.size %>
-      <%=shoe.brand %>
+      <%= image_tag shoe.image.url %><br>
+      Name: <%= shoe.name %><br>
+      Size: <%=shoe.size %><br>
+      Brand: <%=shoe.brand %><br>
+      Price: <%=shoe.price %><br>
+      Notes: <%=shoe.notes %><br>
+      Color: <%=shoe.color %><br>
+      Condition: <%=shoe.condition %><br>
+
       <%= link_to 'Edit', edit_user_shoe_path(@user, shoe), class: "btn btn-warning" %>
+      <%= link_to 'New', new_user_shoe_path(current_user), class: "btn btn-warning" %>
     </div>
   <% end %>
 </div>

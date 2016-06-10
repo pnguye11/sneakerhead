@@ -1,5 +1,5 @@
 class ShoesController < ApplicationController
-  before_action :set_shoe, only: [:show, :edit, :update, :destroy]
+  # before_action :set_shoe, only: [:show, :edit, :update, :destroy]
   before_action :authorize, except: [:index, :show]
   def index
     @shoes = Shoe.all
@@ -12,18 +12,16 @@ class ShoesController < ApplicationController
   end
   def new
     @user = User.find(params[:user_id])
-    @shoe = Shoe.new
+    @shoe = @user.shoes.new
   end
 
   def create
-    @shoe = Shoe.new shoe_params
+    @user = User.find(params[:user_id])
+    @shoe = @user.shoes.new(shoe_params)
     if @shoe.save
-      current_user.shoes << @shoe
-      flash[:success] = "Your kicks has been created brah!"
-      redirect_to root_path
+      redirect_to user_path(@user.id), notice: "Your kicks has been created brah!"
     else
-      flash.now[:alert] = "Your new post couldn't be created!"
-      render :new
+      render :new, alert: "Your new post couldn't be created!"
     end
   end
 
@@ -33,9 +31,10 @@ class ShoesController < ApplicationController
   end
 
   def update
-    if @shoe.update(shoe_params)
+    @shoe = Shoe.find(params[:id])
+    if @shoe.update_attributes(shoe_params)
       flash[:success] = "Updated"
-      redirect_to root_path
+      redirect_to user_path(@shoe.user)
     else
       flash.now[:alert] = "Update failed!"
       render :edit
@@ -43,8 +42,8 @@ class ShoesController < ApplicationController
   end
 
   def destroy
-    @shoe.destroy
-    redirect_to root_path
+    @shoe = Shoe.find(params[:id])
+    redirect_to user_path
   end
 
   private

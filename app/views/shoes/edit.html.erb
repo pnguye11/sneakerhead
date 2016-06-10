@@ -1,6 +1,7 @@
 <%= render 'form' %>
 <div class="text-center edit-links">
+
   <%= link_to "Delete Shoe", user_shoe_path(@shoe.user, @shoe), method: :delete, data: { confirm: "Are you sure you want to delete this shoe?" } %>
   |
-  <%= link_to "cancel", root_path %>
+  <%= link_to "Cancel", user_path(current_user.id) %>
 </div>

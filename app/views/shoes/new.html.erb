@@ -1,12 +1,14 @@
-<div class="jumbotron">
- <h1><u class='change'>Sell your Kicks</u></h1>
-</div>
-<div class="container">
-<div class="form-wrapper">
-
-<div class='.col-md-6 .col-md-offset-3'>
-<%= render 'form' %>
-<%= f.submit class:'btn btn-success' %>
-
-</div>
-</div>
+  <h1>Sell Your Kicks</h1>
+  <%= bootstrap_form_for(@shoe, multipart: true, url: user_shoes_path(@user, @shoe)) do |f| %>
+    <div class="form-group">
+      <%= f.file_field :image %>
+      </div>
+      <%= f.text_field :name %> <br>
+      <%= f.text_field :size %> <br>
+      <%= f.select :condition, [['DS','DS'],['VNDS','VNDS'],['GOOD','GOOD'], ['BEATERS', 'BEATERS']] %><br>
+      <%= f.select :brand, [['NIKE','NIKE'],['ADIDAS','ADIDAS'],['ASICS','ASICS'], ['NEW BALANCE', 'NEW BALANCE']] %><br>
+      <%= f.text_field :price %> <br>
+      <%= f.text_field :notes %> <br>
+      <%= f.text_field :color %> <br>
+      <%= f.submit class:'btn btn-success' %>
+  <% end %>
