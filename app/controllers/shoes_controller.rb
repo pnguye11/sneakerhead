@@ -36,10 +36,8 @@ class ShoesController < ApplicationController
     respond_to do |format|
       if @shoe.update(shoe_params)
         format.html { redirect_to @shoe, notice: 'Shoe was successfully updated.' }
-        format.json { render :show, status: :ok, location: @shoe }
       else
         format.html { render :edit }
-        format.json { render json: @shoe.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -60,7 +58,7 @@ class ShoesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def shoe_params
-      params.require(:shoe).permit(:size, :name, :brand, :price, :condition, :color, :notes)
+      params.require(:shoe).permit(:size, :name, :brand, :price, :condition, :color, :notes, :image)
     end
 
     def correct_user
