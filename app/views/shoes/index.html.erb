@@ -1,17 +1,39 @@
-<h1>kicks</h1>
-<div class="shoes-wrapper row">
-  <% @shoes.each do |shoe| %>
-    <div class="shoe">
-      <div class="shoe-head">
-        <div class="name">
-        </div>
-      </div>
-      <div class="image center-block">
-        <%= image_tag shoe.image.url(:thumb) %>
-      </div>
-      <p class="notes">
-        <%= shoe.notes %>
-      </p>
-    </div>
-  <% end %>
-</div>
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Shoes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Brand</th>
+      <th>Size</th>
+      <th>Price</th>
+      <th>Condition</th>
+      <th>Color</th>
+      <th>Notes</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @shoes.each do |shoe| %>
+      <tr>
+        <td><%= shoe.name %></td>
+        <td><%= shoe.brand %></td>
+        <td><%= shoe.size %></td>
+        <td><%= shoe.price %></td>
+        <td><%= shoe.condition %></td>
+        <td><%= shoe.color %></td>
+        <td><%= shoe.notes %></td>
+        <td><%= link_to 'Show', shoe %></td>
+        <td><%= link_to 'Edit', edit_shoe_path(shoe) %></td>
+        <td><%= link_to 'Destroy', shoe, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Shoe', new_shoe_path %>
