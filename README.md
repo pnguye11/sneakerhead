@@ -48,6 +48,6 @@ As a user I would like to rate other users on their description accuracy and ove
 
 <a href="https://trello.com/b/QGBXkVxw/project-2">Trello</a>
 
-###Send me Push Requests for Improvements!
+
 
 Thank you!
