@@ -4,7 +4,7 @@
 <div class="container">
   <% @user.shoes.each do |shoe| %>
     <div class="col-md-3">
-      <%= image_tag shoe.image.url %><br>
+      <%= image_tag shoe.image.url(:medium) %><br>
       Name: <%= shoe.name %><br>
       <br>
       Size: <%=shoe.size %><br>

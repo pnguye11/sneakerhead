@@ -1,39 +1,30 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Shoes</h1>
+<div class = "row shoes-grid">
+  <% @shoes.each do |shoe| %>
+    <div class = "col-md-3 shoe-item">
+      <div class="panel panel-default Shoe">
+        <div class="panel-body">
+          <%= image_tag shoe.image.url(:medium), class: "img-responsice" %><br>
+        </div>
+        <div class="panel-footer">
+          Name: <%= shoe.name %> <br>
+          Brand: <%= shoe.brand %> <br>
+          Size: <%= shoe.size %> <br>
+          condition: <%= shoe.condition %> <br>
+          Price: <%= shoe.price %> <br>
+          Noted: <%= shoe.notes %> <br>
+          <% if shoe.user == current_user %>
+          <div>
+            <%= link_to 'Edit', edit_shoe_path(shoe) %> |
+            <%= link_to 'Delete', shoe, method: :delete, data: { confirm: 'Are you sure?' } %>
+          </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Brand</th>
-      <th>Size</th>
-      <th>Price</th>
-      <th>Condition</th>
-      <th>Color</th>
-      <th>Notes</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @shoes.each do |shoe| %>
-      <tr>
-        <td><%= shoe.name %></td>
-        <td><%= shoe.brand %></td>
-        <td><%= shoe.size %></td>
-        <td><%= shoe.price %></td>
-        <td><%= shoe.condition %></td>
-        <td><%= shoe.color %></td>
-        <td><%= shoe.notes %></td>
-        <td><%= link_to 'Show', shoe %></td>
-        <td><%= link_to 'Edit', edit_shoe_path(shoe) %></td>
-        <td><%= link_to 'Destroy', shoe, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
-<br>
-
-<%= link_to 'New Shoe', new_shoe_path %>

@@ -1,0 +1,18 @@
+body {
+  padding-top: 75;
+}
+
+.panel-body {
+  padding: 0px;
+}
+.panel-footer {
+  padding: 0px;
+}
+
+.shoe img {
+  width: 100%;
+}
+
+.shoe-item {
+  width: 200;
+}

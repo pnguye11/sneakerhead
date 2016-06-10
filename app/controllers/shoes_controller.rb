@@ -63,6 +63,6 @@ class ShoesController < ApplicationController
 
     def correct_user
       @shoe = current_user.shoes.find_by(id: params[:id])
-      redirect_to shoes_path, notice: "Not authorize to edit this pin" if @shoe.nil?
+      redirect_to shoes_path, notice: "C'mon brah, don't stuff other people's stuff" if @shoe.nil?
     end
 end
