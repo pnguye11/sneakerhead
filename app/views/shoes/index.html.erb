@@ -2,27 +2,24 @@
 <p id="notice"><%= notice %></p>
 <div class = "row shoes-grid">
   <% @shoes.each do |shoe| %>
-    <div class = "col-md-3 shoe-item">
-      <div class="panel panel-default Shoe">
-          <div class="panel-body">
-        <%= link_to image_tag(shoe.image.url(:medium)) %><br>
+    <div class = "col-md-3">
+      <div class="shoe">
+        <%= image_tag shoe.image.url(:medium), class: 'img-responsive' %><br>
+          <P>Name: <%= shoe.name %> </P><br>
+          <P>Brand: <%= shoe.brand %> </P><br>
+          <P>Size: <%= shoe.size %> </P><br>
+          <P>condition: <%= shoe.condition %> </P><br>
+          <P>Price: <%= shoe.price %> </P><br>
+          <P>Noted: <%= shoe.notes %> </P><br>
         </div>
-        <div class="panel-footer">
-          Name: <%= shoe.name %> <br>
-          Brand: <%= shoe.brand %> <br>
-          Size: <%= shoe.size %> <br>
-          condition: <%= shoe.condition %> <br>
-          Price: <%= shoe.price %> <br>
-          Noted: <%= shoe.notes %> <br>
-          <% if shoe.user == current_user %>
           <div>
             <%= link_to 'Edit', edit_shoe_path(shoe) %> |
             <%= link_to 'Delete', shoe, method: :delete, data: { confirm: 'Are you sure?' } %>
           </div>
-          <% end %>
-        </div>
-      </div>
-    </div>
-  <% end %>
+    <% end %>
+   </div>
 </div>
+
+
+
 

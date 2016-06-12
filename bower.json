@@ -1,0 +1,21 @@
+{
+  "name": "sneakerhead",
+  "homepage": "https://github.com/pnguye11/sneakerhead",
+  "authors": [
+    "Phuong Nathan Nguyen <pnguye11@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "vendor/assets/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.6"
+  }
+}

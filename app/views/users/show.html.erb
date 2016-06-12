@@ -4,10 +4,9 @@
 <div class="container">
   <div class ="row">
   <% @user.shoes.each do |shoe| %>
-    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">">
-      <%= image_tag shoe.image.url(:medium) %><br>
+    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+      <%= image_tag shoe.image.url(:medium), class: 'img-responsive' %><br>
       Name: <%= shoe.name %><br>
-      <br>
       Size: <%=shoe.size %><br>
       <br>
       Brand: <%=shoe.brand %><br>
@@ -19,11 +18,9 @@
       Color: <%=shoe.color %><br>
       <br>
       Condition: <%=shoe.condition %><br>
+      <% end %>
 
-      <%= link_to 'Edit', edit_shoe_path, class: "btn btn-warning" %>
-      <%= link_to 'New', new_shoe_path, class: "btn btn-warning" %>
     </div>
-  <% end %>
-</div>
-
+ </div>
+      <%= link_to 'Edit', edit_shoe_path, class: "btn btn-warning" %><%= link_to 'New', new_shoe_path, class: "btn btn-warning" %>
 </div>

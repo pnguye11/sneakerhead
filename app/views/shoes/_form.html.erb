@@ -1,20 +1,20 @@
-  <h1>Sell Your Kicks</h1>
-  <%= form_for @shoe, html: {multipart: true} do |f| %>
+<h1>Sell Your Kicks</h1>
+<%= form_for @shoe, html: {multipart: true} do |f| %>
 <div class="container">
-<div class="row">
-  <div class="col-md-8 col-md-offset-2">
-    <div class="form-group">
-      <%= f.file_field :image %>
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <div class="form-group">
+        <%= f.file_field :image %>
+        </div>
+        Name: <%= f.text_field :name %> <br>
+        Size: <%= f.text_field :size %> <br>
+        Condition: <%= f.select :condition, [['DS','DS'],['VNDS','VNDS'],['GOOD','GOOD'], ['BEATERS', 'BEATERS']] %><br>
+        Brand: <%= f.select :brand, [['NIKE','NIKE'],['ADIDAS','ADIDAS'],['ASICS','ASICS'], ['NEW BALANCE', 'NEW BALANCE']] %><br>
+        Price: <%= f.text_field :price %> <br>
+        Notes: <%= f.text_field :notes %> <br>
+        Color: <%= f.text_field :color %> <br>
+        <%= f.submit class:'btn btn-create' %>
+      <% end %>
       </div>
-      <%= f.text_field :name %> <br>
-      <%= f.text_field :size %> <br>
-      <%= f.select :condition, [['DS','DS'],['VNDS','VNDS'],['GOOD','GOOD'], ['BEATERS', 'BEATERS']] %><br>
-      <%= f.select :brand, [['NIKE','NIKE'],['ADIDAS','ADIDAS'],['ASICS','ASICS'], ['NEW BALANCE', 'NEW BALANCE']] %><br>
-      <%= f.text_field :price %> <br>
-      <%= f.text_field :notes %> <br>
-      <%= f.text_field :color %> <br>
-      <%= f.submit class:'btn btn-success' %>
-    <% end %>
     </div>
-  </div>
 </div>

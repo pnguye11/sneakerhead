@@ -15,6 +15,7 @@ nate = User.new(
   user_name: "nn23",
   password: "123",
   password_confirmation: "123"
+
 )
 
 
@@ -23,7 +24,8 @@ kate = User.new(
   email: "k@email.com",
   user_name: "kk23",
   password: "123",
-  password_confirmation: "123"
+  password_confirmation: "123",
+  admin: true
 )
 
 kate.save

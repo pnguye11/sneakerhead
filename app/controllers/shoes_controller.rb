@@ -1,57 +1,50 @@
 class ShoesController < ApplicationController
-  before_action :set_shoe, only: [:show, :edit, :update, :destroy]
-  before_action :correct_user, only: [:edit, :update, :destroy]
-
   def index
     @shoes = Shoe.all
   end
 
   def show
+    @shoe = Shoe.find(params[:id])
   end
 
-  # GET /shoes/new
   def new
-    @shoe = current_user.shoes.build
+    @shoe = Shoe.new
   end
 
   def edit
+    @shoe = Shoe.find(params[:id])
   end
 
   def create
-    @shoe = current_user.shoes.build(shoe_params)
-      respond_to do |format|
-      if @shoe.save
-        format.html { redirect_to @shoe, notice: 'Shoe was successfully created.' }
-      else
-        format.html { render :new }
+    @shoe = Shoe.new post_params
+    if @shoe.save
+      if current_user
+        current_user.shoes << @shoe
       end
+      redirect_to shoe_path(@shoe.id)
+    else
+      render 'new'
     end
   end
 
   def update
-    respond_to do |format|
-      if @shoe.update(shoe_params)
-        format.html { redirect_to @shoe, notice: 'Shoe was successfully updated.' }
-      else
-        format.html { render :edit }
-      end
+    @shoe = Shoe.find(params[:id])
+    if @shoe.save
+      @shoe.update(shoe_params)
+      redirect_to shoes_path
+    else
+      render 'edit'
     end
   end
 
   def destroy
+    @shoe = Shoe.find(params[:id])
     @shoe.destroy
-    respond_to do |format|
-      format.html { redirect_to shoes_url, notice: 'Shoe was successfully destroyed.' }
-    end
+    redirect_to shoes_path
   end
 
   private
 
-    def set_shoe
-      @shoe = Shoe.find(params[:id])
-    end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
     def shoe_params
       params.require(:shoe).permit(:size, :name, :brand, :price, :condition, :color, :notes, :image)
     end

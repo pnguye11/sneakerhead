@@ -1,18 +1,18 @@
-<% provide(:title, "Edit user") %>
+<% provide(:title, "Edit Profile") %>
 <h1>Update your profile</h1>
 
 <div class="row">
   <div class="col-md-8 col-md-offset-2">
 
     <%= form_for(@user) do |f| %>
+      <%= f.label :name %>
+      <%= f.text_field :name, class: 'form-control' %>
+
       <%= f.label :email %>
       <%= f.text_field :email, class: 'form-control' %>
 
       <%= f.label :user_name %>
       <%= f.text_field :user_name, class: 'form-control' %>
-
-      <%= f.label :statement, "About Me" %>
-      <%= f.text_field :statement, class: 'form-control' %>
 
       <%= f.label :password %>
       <%= f.password_field :password, class: 'form-control' %>
@@ -26,6 +26,6 @@
 </div>
 <h3>Cancel my account</h3>
 
-<p>Unhappy? <%= button_to "Cancel my account", user, data: { confirm: "Are you sure?" }, method: :delete %></p>
+<p>Unhappy? <%= link_to "Delete Profile", user_path(current_user.id), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
 <%= link_to "Back", :back %>
