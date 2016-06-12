@@ -28,7 +28,7 @@ def new
   end
 
   def destroy
-    @user = User.find(current_user)
+    @user = User.find(current_user.id)
     @user.destroy
     current_user = nil
     redirect_to shoes_path

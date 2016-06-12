@@ -1,25 +1,26 @@
-
-<p id="notice"><%= notice %></p>
-<div class = "row shoes-grid">
+<div class= "row">
   <% @shoes.each do |shoe| %>
     <div class = "col-md-3">
-      <div class="shoe">
-        <%= image_tag shoe.image.url(:medium), class: 'img-responsive' %><br>
-          <P>Name: <%= shoe.name %> </P><br>
-          <P>Brand: <%= shoe.brand %> </P><br>
-          <P>Size: <%= shoe.size %> </P><br>
-          <P>condition: <%= shoe.condition %> </P><br>
-          <P>Price: <%= shoe.price %> </P><br>
-          <P>Noted: <%= shoe.notes %> </P><br>
-        </div>
+      <div class = "panel panel-default">
+        <div class = "panel-body">
+          <%= image_tag shoe.image.url(:medium), class:'img-responsive' %><br>
+         </div>
+        <div class = "panel-footer">
+          <p>Name: <%= shoe.name %> <br>
+            Brand: <%= shoe.brand %> <br>
+            Size: <%= shoe.size %> <br>
+            Condition: <%= shoe.condition %> <br>
+            Price: <%= shoe.price %> <br>
+            Noted: <%= shoe.notes %> <br>
           <div>
-            <%= link_to 'Edit', edit_shoe_path(shoe) %> |
-            <%= link_to 'Delete', shoe, method: :delete, data: { confirm: 'Are you sure?' } %>
-          </div>
-    <% end %>
-   </div>
+            <%= link_to "Back", shoes_path %>
+            |
+            <%= link_to "Edit Shoe", edit_shoe_path(shoe) %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end %>
 </div>
-
-
 
 

@@ -1,4 +1,5 @@
 class ShoesController < ApplicationController
+  before_action :correct_user, only: [:edit, :update, :destroy]
   def index
     @shoes = Shoe.all
   end
@@ -16,7 +17,7 @@ class ShoesController < ApplicationController
   end
 
   def create
-    @shoe = Shoe.new post_params
+    @shoe = Shoe.new shoe_params
     if @shoe.save
       if current_user
         current_user.shoes << @shoe

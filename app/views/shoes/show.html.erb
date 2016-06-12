@@ -1,18 +1,29 @@
-
-<div class="text-center edit-links">
-    <%= link_to "User Home", user_path(current_user) %>
-    <div class="row">
-      <%= image_tag @shoe.image.url(:medium) %><br>
-      Name: <%= @shoe.name %> <br>
-      Brand: <%= @shoe.brand %> <br>
-      Size: <%= @shoe.size %> <br>
-      condition: <%= @shoe.condition %> <br>
-      Price: <%= @shoe.price %> <br>
-      Noted: <%= @shoe.notes %> <br>
+<div class= "row">
+  <% shoes.each do |shoe| %>
+    <div class = "col-md-3">
+      <div class = "panel panel-default">
+        <div class = "panel-body">
+          <%= image_tag @shoe.image.url(:medium) %><br>
+         </div>
+        <div class = "panel-footer">
+          <p>Name: <%= @shoe.name %> <br>
+            Brand: <%= @shoe.brand %> <br>
+            Size: <%= @shoe.size %> <br>
+            condition: <%= @shoe.condition %> <br>
+            Price: <%= @shoe.price %> <br>
+            Noted: <%= @shoe.notes %> <br>
+          <div>
+            <%= link_to "Back", shoes_path %>
+            |
+            <%= link_to "Edit Shoe", edit_shoe_path %>
+        </div>
+      </div>
     </div>
-
-      <%= link_to "Back", shoes_path %>
-      |
-     <%= link_to "Edit Shoe", edit_shoe_path %>
+  </div>
+  <% end %>
 </div>
+
+
+
+
 
