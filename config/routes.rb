@@ -3,7 +3,11 @@ Rails.application.routes.draw do
   resources :shoes
   resources :users
 
-
+  resource :shoes do
+    member do
+      post '/like' => 'shoes#like'
+    end
+  end
 
   resources :sessions, only: [:create]
   get '/login', to: "sessions#new"

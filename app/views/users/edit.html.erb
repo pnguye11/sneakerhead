@@ -2,7 +2,7 @@
 <h1>Update your profile</h1>
 
 <div class="row">
-  <div class="col-md-8 col-md-offset-2">
+  <div class="col-md-3 col-md-offset-2">
 
     <%= form_for(@user) do |f| %>
       <%= f.label :name %>
@@ -23,9 +23,9 @@
       <%= f.submit "Update Changes", class: "btn btn-primary form-control" %>
     <% end %>
   </div>
-</div>
 <h3>Cancel my account</h3>
 
 <p>Unhappy? <%= link_to "Delete Profile", user_path(current_user.id), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
 <%= link_to "Back", :back %>
+</div>

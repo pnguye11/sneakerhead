@@ -1,18 +1,28 @@
-<p id="alert"><%= alert %></p>
-<div class="container">
- <%= form_tag sessions_path do %>
-  <div class="field">
-    <%= label_tag :Email %>
-    <%= text_field_tag :email, params[:email] %>
-  </div>
-  <br>
-  <div class="field">
-    <%= label_tag :Password %>
-    <%= password_field_tag :password %>
-  </div>
-  <br>
-  <div class="actions"><%= submit_tag "Log In" %></div>
-</div>
+<div class= "container">
 
-<% end %>
+
+
+<div class= "row">
+    <div class = "col-md-3, col-lg-3">
+      <div class = "panel panel-default">
+        <div class = "panel-body">
+  <p id="alert"><%= alert %></p>
+<h2>Log In</h2>
+        <%= form_tag sessions_path do %>
+      <div class="form-group">
+        <%= label_tag :email %>
+        <%= text_field_tag :email, params[:email], class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= label_tag :password %>
+        <%= password_field_tag :password, nil, class: "form-control" %>
+      </div>
+    <%= submit_tag "Log In", class: 'btn btn-default' %>
+  <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
 

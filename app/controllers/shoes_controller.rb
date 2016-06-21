@@ -1,11 +1,25 @@
 class ShoesController < ApplicationController
-  before_action :correct_user, only: [:edit, :update, :destroy]
+  before_action :correct_user, only: [:edit, :update, :destroy, ]
+  before_action :set_shoe, only: [:show, :like]
   def index
     @shoes = Shoe.all
   end
 
   def show
     @shoe = Shoe.find(params[:id])
+  end
+
+  # like belongs to user
+  def like
+
+    @like = @shoe.likes.build(user_id: current_user.id)
+      if @like.save
+        flash[:notice] = "You liked this shoe!"
+        redirect_to shoes_path
+      else
+        flash[:notice] = "You already liked this shoe!"
+        redirect_to shoes_path
+      end
   end
 
   def new
@@ -46,8 +60,13 @@ class ShoesController < ApplicationController
 
   private
 
+    def set_shoe
+      @shoe = Shoe.find_by(params[:id])
+
+    end
+
     def shoe_params
-      params.require(:shoe).permit(:size, :name, :brand, :price, :condition, :color, :notes, :image)
+      params.require(:shoe).permit(:size, :name, :brand, :price, :condition, :color, :notes, :image, :likes)
     end
 
     def correct_user

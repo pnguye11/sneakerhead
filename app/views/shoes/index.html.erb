@@ -1,7 +1,7 @@
 <div class= "row">
   <% @shoes.each do |shoe| %>
     <div class = "col-md-3">
-      <div class = "panel panel-default">
+      <div class = "panel panel-default shoe">
         <div class = "panel-body">
           <%= image_tag shoe.image.url(:medium), class:'img-responsive' %><br>
          </div>
@@ -12,11 +12,15 @@
             Condition: <%= shoe.condition %> <br>
             Price: <%= shoe.price %> <br>
             Noted: <%= shoe.notes %> <br>
+            <%= pluralize(shoe.likes.count, "like") %> <br>
           <div>
+            <% if shoe.user == current_user %>
             <%= link_to "Back", shoes_path %>
             |
             <%= link_to "Edit Shoe", edit_shoe_path(shoe) %>
-        </div>
+            <%= link_to "Like", like_shoes_path(shoe), method: :post, class: 'pull-right' %>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
